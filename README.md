@@ -24,7 +24,7 @@ To access your cluster, you need to define some ingress rules.
 ### Firewall Configuration
 Each new Oracle Cloud instance has a default firewall configuration. To ensure your cluster operates correctly, you need to adjust some rules.
 
-Run the `firewallSetup.sh` script or execute the following instructions:
+Run the `./setup-nodes/firewallSetup.sh` script or execute the following instructions:
 ```sh
 ## Save existing rules
 sudo iptables-save > ~/iptables-rules
@@ -49,7 +49,7 @@ sudo systemctl restart iptables
 ### Cluster Bootstrapping
 Before setting up a cluster with CRI-O, ensure you follow these requirements: enable kernel modules, configure sysctl settings, and disable swap. Refer to the [Kubernetes official documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin).
 
-Run the `bootstrapCluster.sh` script or execute the following commands:
+Run the `./setup-nodes/bootstrapCluster.sh` script or execute the following commands:
 ```sh
 ## Disable swap
 sudo swapoff -a
@@ -78,7 +78,7 @@ sudo sysctl --system
 ### Container Runtime
 In Kubernetes, a container runtime manages the lifecycle of containers. We will use CRI-O. Refer to the [Kubernetes runtime setup documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-runtime).
 
-Run the `installCrio.sh` script or execute the following commands:
+Run the `./setup-nodes/installCrio.sh` script or execute the following commands:
 ```sh
 sudo apt-get update -y
 sudo apt-get install -y software-properties-common curl apt-transport-https ca-certificates
@@ -97,7 +97,7 @@ sudo systemctl start crio.service
 ### Kubeadm, Kubelet, and Kubectl
 After installing CRI-O, install the Kubernetes components: kubeadm, kubelet, and kubectl.
 
-Run the `installK8s.sh` script or execute the following commands:
+Run the `./setup-nodes/installK8s.sh` script or execute the following commands:
 ```sh
 KUBERNETES_VERSION=v1.30
 curl -fsSL https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
@@ -210,7 +210,7 @@ Before installing, update the `values.yaml` with the following modifications:
     ```
 
 ### Reset Your Cluster
-To reset your cluster, run the `resetCluster.sh` script or use the following commands:
+To reset your cluster, run the `./setup-nodes/resetCluster.sh` script or use the following commands:
 ```sh
 kubeadm reset -f
 sudo iptables-restore < ~/iptables-rules-mod
