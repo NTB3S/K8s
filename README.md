@@ -107,6 +107,7 @@ sudo apt-get update -y
 sudo apt-get install -y kubelet kubeadm kubectl
 ```
 
+## Control plane Setup
 ### Kubeadm Init
 Initialize the Kubernetes cluster on the control plane by setting up the master node:
 ```sh
