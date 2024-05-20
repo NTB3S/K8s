@@ -173,7 +173,7 @@ MetalLB is a load balancer implementation for bare-metal Kubernetes clusters, pr
 
 To install MetalLB, execute the following commands:
 ```sh
-kubectl apply -f metallb.yaml
+kubectl apply -f metallb/metallb-calico.yaml
 ```
 
 ### Ingress - Nginx
