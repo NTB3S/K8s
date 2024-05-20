@@ -176,6 +176,15 @@ To install MetalLB, execute the following commands:
 kubectl apply -f metallb/metallb-calico.yaml
 ```
 
+The installation manifest does not include a configuration file. While MetalLB's components will start, they will remain idle until we provide the required configuration, including an IPAddressPool.
+We'll be employing Layer 2 configuration for simplicity. This mode requires only a range of IP addresses. As detailed in the official documentation [here](https://metallb.universe.tf/configuration/), we'll need to create an additional manifest to provision an object of type L2Advertisement.
+
+Run the following commands
+```
+kubectl apply -f metallb/ipaddresspool.yaml
+kubectl apply -f metallb/l2advertisement.yaml
+```
+
 ### Ingress - Nginx
 An Ingress controller is an essential component for managing external access to your services in a Kubernetes cluster, typically via HTTP/HTTPS. It provides capabilities such as load balancing, SSL termination, and name-based virtual hosting. The Nginx Ingress Controller is a popular choice for managing these requirements due to its performance, reliability, and comprehensive feature set.
 
