@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-nginx-app
+  annotations:
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: k8sbys3bstn.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: nginx-app-svc
+            port:
+              number: 80

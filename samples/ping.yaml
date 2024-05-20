@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ping
+  template:
+    metadata:
+      labels:
+        app: ping
+    spec:
+      nodeSelector: 
+        kubernetes.io/hostname: "control-plane-1-504298"
+      containers:
+      - name: ping-container
+        image: alpine:latest
+        command: ["/bin/ping", "127.0.0.1"]
+        securityContext:
+          capabilities:
+            add:
+              - NET_RAW
+            drop:
+              - ALL
