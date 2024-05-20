@@ -1,4 +1,4 @@
-# Oracle Cloud Kubernetes Cluster Setup Guide
+# Free Oracle Cloud Kubernetes Cluster Setup Guide
 
 ## Oracle Cloud Setup
 
