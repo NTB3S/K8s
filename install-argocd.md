@@ -96,3 +96,11 @@ Apply the Ingress configurations using the following commands:
 kubectl apply -f ./ingress/ingress-master.yaml
 kubectl apply -f ./ingress/ingress-argocd.yaml
 ```
+
+#### Applying Ingress Configurations
+
+To retrieve the argoCD password you can use the following command : 
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
