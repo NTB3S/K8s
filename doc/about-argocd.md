@@ -1,7 +1,3 @@
-Certainly! Here's a README.md explaining what Argo CD is and how it works, focusing on concepts rather than configuration or installation details:
-
----
-
 # Argo CD: Continuous Delivery for Kubernetes
 
 ## Overview

@@ -1,7 +1,3 @@
-Certainly! Here's a simplified README.md focusing on the installation steps for Argo CD without steps 3 and 4:
-
----
-
 # Argo CD Installation Guide
 
 ## Overview
@@ -26,14 +22,34 @@ Create a namespace for Argo CD:
 kubectl create namespace argocd
 ```
 
-### Step 2: Apply Installation Manifest
+### Step 2: Installation
+
+#### Step 2.1 : Manifest
 
 Apply the Argo CD installation manifest:
 
 ```bash
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+
+#### Step 2.2: Helm
+
+```bash
+helm repo add argo https://argoproj.github.io/argo-helm
+helm search repo argo
+helm install argocd argo/argo-cd --namespace argocd
+```
+
+
 ### Step 3: Exposing with Nginx Ingress
+Based on the [argocd documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/) you have to edit the argocd-server deployment and and the both bellow flags :
+```bash
+- --insecure
+- --rootpath=/argocd
+```
+
+Or you can use the argocd-values.yaml when you install the chart to enable it.
+
 
    Given our Kubernetes cluster is divided into multiple namespaces, use Nginx Ingress to expose services across namespaces. Refer to this guide for detailed setup:
    [Routing Ingress Traffic Across Namespaces](https://tech.aabouzaid.com/2022/08/2-ways-to-route-ingress-traffic-across-namespaces.html)
