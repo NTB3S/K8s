@@ -196,7 +196,7 @@ To install the Nginx Ingress Controller:
 Before installing, update the `values.yaml` with the following modifications:
 - Set `hostPort` to **true**.
 - Set `kind` to **DaemonSet**.
-- 
+  
 1. Install the Nginx Ingress Controller using Helm:
     ```sh
     helm upgrade --install ingress-nginx ingress-nginx \
