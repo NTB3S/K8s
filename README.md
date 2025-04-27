@@ -191,22 +191,17 @@ An Ingress controller is an essential component for managing external access to 
 
 To install the Nginx Ingress Controller:
 
-1. Download and unpack the Helm chart:
-    ```sh
-    helm pull oci://ghcr.io/nginxinc/charts/nginx-ingress --untar --version 1.2.1
-    ```
-2. Apply the necessary Custom Resource Definitions (CRDs):
-    ```sh
-    kubectl apply -f nginx-ingress/crds/
-    ```
+[Offical documetation](https://kubernetes.github.io/ingress-nginx/deploy/)
 
 Before installing, update the `values.yaml` with the following modifications:
 - Set `hostPort` to **true**.
 - Set `kind` to **DaemonSet**.
-
-3. Install the Nginx Ingress Controller using Helm:
+- 
+1. Install the Nginx Ingress Controller using Helm:
     ```sh
-    helm install nginx-ingress nginx-ingress
+    helm upgrade --install ingress-nginx ingress-nginx \
+    --repo https://kubernetes.github.io/ingress-nginx \
+    --namespace ingress-nginx --create-namespace --values values.yaml
     ```
 
 ### Reset Your Cluster
