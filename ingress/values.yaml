@@ -1,0 +1,5 @@
+controller:
+  kind: DaemonSet
+  hostNetwork: false
+  hostPort:
+    enabled: true
