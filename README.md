@@ -217,6 +217,7 @@ sudo systemctl restart iptables
 
 ### Cert manager
 https://cert-manager.io/docs/installation/helm/
+https://cert-manager.io/docs/tutorials/acme/nginx-ingress/
 
 ### Sources
 - [DevOpsCube Kubernetes Setup](https://devopscube.com/setup-kubernetes-cluster-kubeadm/)
